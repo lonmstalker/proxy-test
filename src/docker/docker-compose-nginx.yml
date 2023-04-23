@@ -1,0 +1,25 @@
+version: "3.1"
+services:
+  netty-server:
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: ../../Dockerfile
+    networks:
+      - web
+  nginx:
+    image: nginx:latest
+    restart: unless-stopped
+    environment:
+      - NETTY_SERVER="http://netty-server:8080"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - web
+    ports:
+      - "8080:8080"
+
+networks:
+  web:
+    external:
+      name: web
