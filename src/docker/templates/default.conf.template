@@ -1,11 +1,4 @@
-http {
-    include mime.types;
-
-    log_not_found off;
-    access_log /var/log/nginx/access.log;
-    error_log /var/log/nginx/error.log error;
-
-    server {
+server {
         listen 80;
 
         charset UTF-8;
@@ -24,4 +17,3 @@ http {
             proxy_http_version 1.1;
         }
     }
-}

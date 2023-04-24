@@ -14,11 +14,11 @@ services:
       NETTY_SERVER: http://netty-server:8080
     volumes:
       - ./templates:/etc/nginx/templates
-      - ./nginx.conf:/etc/nginx/nginx.conf
+#      - ./nginx.conf:/etc/nginx/nginx.conf
     networks:
       - web
     ports:
-      - "8080:8080"
+      - "80:80"
 
 networks:
   web:
